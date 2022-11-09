@@ -21,7 +21,7 @@ async function run() {
 
     try {
         const serviceCollection = client.db('tourBD').collection('services');
-        // const orderCollection = client.db('geniousCar').collection('orders');
+     const reviewCollection = client.db('tourBD').collection('reviews');
 
 
         app.get('/services', async (req, res) => {
