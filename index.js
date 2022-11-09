@@ -46,18 +46,18 @@ async function run() {
         });
 
 
-        // app.get('/orders', async (req, res) => {
+        app.get('/reviews', async (req, res) => {
 
-        //     let query = {};
-        //     if (req.query.email) {
-        //         query = {
-        //             email: req.query.email
-        //         }
-        //     }
-        //     const cursor = orderCollection.find(query);
-        //     const orders = await cursor.toArray();
-        //     res.send(orders)
-        // })
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = reviewCollection.find(query);
+            const reviews = await cursor.toArray();
+            res.send(reviews)
+        })
 
 
         app.post('/reviews', async (req, res) => {
