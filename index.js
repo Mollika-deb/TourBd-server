@@ -21,6 +21,7 @@ async function run() {
 
     try {
         const serviceCollection = client.db('tourBD').collection('services');
+        const addServiceCollection = client.db('tourBD').collection(' addService');
      const reviewCollection = client.db('tourBD').collection('reviews');
 
 
@@ -73,6 +74,26 @@ async function run() {
             const result = await reviewCollection.insertOne(review);
             res.send(result);
         });
+
+        app.post('/addService', async(req, res) =>{
+           const  addService = req.body;
+            const result = await addServiceCollection.insertOne(addService);
+            res.send(result)
+        })
+
+        app.get('/addService', async (req, res) => {
+
+            let query = {};
+            const email = req.query.email;
+            if (email) {
+                query = {
+                    email: email,
+                }
+            }
+            const cursor = addServiceCollection.find(query);
+            const addService = await cursor.toArray();
+            res.send(addService)
+        })
     }
     finally {
 
