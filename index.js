@@ -92,7 +92,7 @@ async function run() {
             }
             const cursor = addServiceCollection.find(query);
             const addService = await cursor.toArray();
-            res.send(addService)
+            res.send(addService);
         })
     }
     finally {
